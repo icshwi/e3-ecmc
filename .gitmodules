@@ -1,4 +1,4 @@
 [submodule "ecmc"]
 	path = ecmc
 	url = https://github.com/epics-modules/ecmc.git
-	ignore = all
+	ignore = dirty
