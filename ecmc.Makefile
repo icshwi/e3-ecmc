@@ -34,6 +34,10 @@ ifneq ($(strip $(EXPRTK_DEP_VERSION)),)
 exprtk_VERSION=$(EXPRTK_DEP_VERSION)
 endif
 
+ifneq ($(strip $(MOTOR_DEP_VERSION)),)
+motor_VERSION=$(MOTOR_DEP_VERSION)
+endif
+
 EXCLUDE_ARCHS += linux-ppc64e6500 
 EXCLUDE_ARCHS += linux-corei7-poky
 
@@ -54,6 +58,7 @@ USR_CFLAGS   += -fPIC
 USR_LDFLAGS  += -L $(SDKTARGETSYSROOT)/usr/lib/etherlab
 USR_LDFLAGS  += -lethercat
 USR_LDFLAGS  += -Wl,-rpath=$(SDKTARGETSYSROOT)/usr/lib/etherlab
+USR_LDFLAGS  += -lstdc++
 endif
 
 
@@ -66,6 +71,7 @@ APPSRC_COM:=$(APPSRC)/com
 APPSRC_MAIN:=$(APPSRC)/main
 APPSRC_PLC:=$(APPSRC)/plc
 APPSRC_MISC:=$(APPSRC)/misc
+APPSRC_MOTOR:=$(APPSRC)/motor
 
 USR_INCLUDES += -I$(where_am_I)$(APPSRC)
 
@@ -118,9 +124,13 @@ SOURCES += $(APPSRC_PLC)/ecmcPLCTask.cpp
 SOURCES += $(APPSRC_PLC)/ecmcPLCDataIF.cpp
 SOURCES += $(APPSRC_PLC)/ecmcPLCMain.cpp
 
+SOURCES += $(APPSRC_MOTOR)/ecmcMotorRecordController.cpp
+SOURCES += $(APPSRC_MOTOR)/ecmcMotorRecordAxis.cpp
+
 SOURCES += gitversion.c
 
 DBDS    += $(APPSRC_COM)/ecmcController.dbd
+DBDS    += $(APPSRC_MOTOR)/ecmcMotorRecordSupport.dbd
 
 ecmcEcMemMap$(DEP): gitversion.c
 
