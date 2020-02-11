@@ -7,8 +7,8 @@ E3_MODULE_VERSION:=6.1.0
 
 # DEPENDENT MODULE VERSION
 ASYN_DEP_VERSION:=4.36.0
-#
 EXPRTK_DEP_VERSION:=1.2.0
+MOTOR_DEP_VERSION:=7.0.1
 #
 # In most case, we don't need to touch the following variables.
 #
