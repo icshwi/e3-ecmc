@@ -50,6 +50,14 @@ USR_CFLAGS += -fPIC
 USR_LDFLAGS += -L /opt/etherlab/lib
 USR_LDFLAGS += -lethercat
 USR_LDFLAGS += -Wl,-rpath=/opt/etherlab/lib
+else ($(T_A),linux-arm)
+# Assume that the etherlab user library is done via
+# https://github.com/icshwi/etherlabmaster
+USR_INCLUDES += -I/opt/etherlab/include
+USR_CFLAGS += -fPIC
+USR_LDFLAGS += -L /opt/etherlab/lib
+USR_LDFLAGS += -lethercat
+USR_LDFLAGS += -Wl,-rpath=/opt/etherlab/lib
 else
 # Assume that the etherlab user library is done via
 # Yocto ESS Linux bb recipe
