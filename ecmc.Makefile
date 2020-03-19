@@ -41,32 +41,36 @@ endif
 EXCLUDE_ARCHS += linux-ppc64e6500 
 EXCLUDE_ARCHS += linux-corei7-poky
 
-
 ifeq ($(T_A),linux-x86_64)
-# Assume that the etherlab user library is done via
-# https://github.com/icshwi/etherlabmaster
-USR_INCLUDES += -I/opt/etherlab/include
-USR_CFLAGS += -fPIC
-USR_LDFLAGS += -L /opt/etherlab/lib
-USR_LDFLAGS += -lethercat
-USR_LDFLAGS += -Wl,-rpath=/opt/etherlab/lib
-else ($(T_A),linux-arm)
-# Assume that the etherlab user library is done via
-# https://github.com/icshwi/etherlabmaster
-USR_INCLUDES += -I/opt/etherlab/include
-USR_CFLAGS += -fPIC
-USR_LDFLAGS += -L /opt/etherlab/lib
-USR_LDFLAGS += -lethercat
-USR_LDFLAGS += -Wl,-rpath=/opt/etherlab/lib
-else
-# Assume that the etherlab user library is done via
-# Yocto ESS Linux bb recipe
-USR_INCLUDES += -I$(SDKTARGETSYSROOT)/usr/include/etherlab
-USR_CFLAGS   += -fPIC
-USR_LDFLAGS  += -L $(SDKTARGETSYSROOT)/usr/lib/etherlab
-USR_LDFLAGS  += -lethercat
-USR_LDFLAGS  += -Wl,-rpath=$(SDKTARGETSYSROOT)/usr/lib/etherlab
-USR_LDFLAGS  += -lstdc++
+  $(info    T_A is $(T_A))
+  # Assume that the etherlab user library is done via
+  # https://github.com/icshwi/etherlabmaster
+  USR_INCLUDES += -I/opt/etherlab/include
+  USR_CFLAGS += -fPIC
+  USR_LDFLAGS += -L /opt/etherlab/lib
+  USR_LDFLAGS += -lethercat
+  USR_LDFLAGS += -Wl,-rpath=/opt/etherlab/lib
+else 
+  ifeq ($(T_A),linux-arm)
+    $(info    T_A is $(T_A))
+    # Assume that the etherlab user library is done via
+    # https://github.com/icshwi/etherlabmaster
+    USR_INCLUDES += -I/opt/etherlab/include
+    USR_CFLAGS += -fPIC
+    USR_LDFLAGS += -L /opt/etherlab/lib
+    USR_LDFLAGS += -lethercat
+    USR_LDFLAGS += -Wl,-rpath=/opt/etherlab/lib
+  else
+    $(info    In else T_A is $(T_A))
+    # Assume that the etherlab user library is done via
+    # Yocto ESS Linux bb recipe
+    USR_INCLUDES += -I$(SDKTARGETSYSROOT)/usr/include/etherlab
+    USR_CFLAGS   += -fPIC
+    USR_LDFLAGS  += -L $(SDKTARGETSYSROOT)/usr/lib/etherlab
+    USR_LDFLAGS  += -lethercat
+    USR_LDFLAGS  += -Wl,-rpath=$(SDKTARGETSYSROOT)/usr/lib/etherlab
+    USR_LDFLAGS  += -lstdc++
+  endif
 endif
 
 
