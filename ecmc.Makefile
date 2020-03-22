@@ -60,7 +60,7 @@ USR_LDFLAGS  += -lethercat
 USR_LDFLAGS  += -Wl,-rpath=$(SDKTARGETSYSROOT)/usr/lib/etherlab
 USR_LDFLAGS  += -lstdc++
 endif
-
+#CFLAGS="-shared -fPIC -Wall -Wextra "
 
 APP:=devEcmcSup
 APPSRC:=$(APP)
@@ -130,7 +130,7 @@ SOURCES += $(APPSRC_MOTOR)/ecmcMotorRecordAxis.cpp
 
 SOURCES += $(APPSRC_PLUGIN)/ecmcPlugin.cpp
 SOURCES += $(APPSRC_PLUGIN)/ecmcPluginLib.cpp
-SOURCES += $(APPSRC_PLUGIN)/ecmcPluginExample.c
+#SOURCES += $(APPSRC_PLUGIN)/ecmcPluginExample.c
 
 SOURCES += gitversion.c
 
