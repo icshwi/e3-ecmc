@@ -72,6 +72,7 @@ APPSRC_MAIN:=$(APPSRC)/main
 APPSRC_PLC:=$(APPSRC)/plc
 APPSRC_MISC:=$(APPSRC)/misc
 APPSRC_MOTOR:=$(APPSRC)/motor
+APPSRC_PLUGIN:=$(APPSRC)/plugin
 
 USR_INCLUDES += -I$(where_am_I)$(APPSRC)
 
@@ -126,6 +127,10 @@ SOURCES += $(APPSRC_PLC)/ecmcPLCMain.cpp
 
 SOURCES += $(APPSRC_MOTOR)/ecmcMotorRecordController.cpp
 SOURCES += $(APPSRC_MOTOR)/ecmcMotorRecordAxis.cpp
+
+SOURCES += $(APPSRC_PLUGIN)/ecmcPlugin.cpp
+SOURCES += $(APPSRC_PLUGIN)/ecmcPluginLib.cpp
+SOURCES += $(APPSRC_PLUGIN)/ecmcPluginExample.c
 
 SOURCES += gitversion.c
 
