@@ -60,7 +60,6 @@ USR_LDFLAGS  += -lethercat
 USR_LDFLAGS  += -Wl,-rpath=$(SDKTARGETSYSROOT)/usr/lib/etherlab
 USR_LDFLAGS  += -lstdc++
 endif
-#CFLAGS="-shared -fPIC -Wall -Wextra "
 
 APP:=devEcmcSup
 APPSRC:=$(APP)
@@ -130,14 +129,19 @@ SOURCES += $(APPSRC_MOTOR)/ecmcMotorRecordAxis.cpp
 
 SOURCES += $(APPSRC_PLUGIN)/ecmcPlugin.cpp
 SOURCES += $(APPSRC_PLUGIN)/ecmcPluginLib.cpp
-#SOURCES += $(APPSRC_PLUGIN)/ecmcPluginExample.c
 
 SOURCES += gitversion.c
 
+HEADERS += $(APPSRC_PLUGIN)/ecmcPluginDefs.h
+HEADERS += $(APPSRC_PLUGIN)/ecmcPluginDataRefs.h
+HEADERS += $(APPSRC_COM)/ecmcAsynPortDriver.h
+HEADERS += $(APPSRC_COM)/ecmcAsynDataItem.h
+HEADERS += $(APPSRC_COM)/ecmcAsynPortDriverUtils.h
+HEADERS += $(APPSRC_MAIN)/ecmcDefinitions.h
+HEADERS += $(APPSRC_MAIN)/ecmcErrorsList.h
+
 DBDS    += $(APPSRC_COM)/ecmcController.dbd
 DBDS    += $(APPSRC_MOTOR)/ecmcMotorRecordSupport.dbd
-
-ecmcEcMemMap$(DEP): gitversion.c
 
 gitversion.c: 
 	$(QUIET)$(RM) $@
