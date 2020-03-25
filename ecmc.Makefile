@@ -144,13 +144,19 @@ SOURCES += $(APPSRC_PLUGIN)/ecmcPluginLib.cpp
 
 SOURCES += gitversion.c
 
+HEADERS += $(APPSRC_PLUGIN)/ecmcPlugin.h
 HEADERS += $(APPSRC_PLUGIN)/ecmcPluginDefs.h
 HEADERS += $(APPSRC_PLUGIN)/ecmcPluginDataRefs.h
+HEADERS += $(APPSRC_COM)/ecmcCom.h
 HEADERS += $(APPSRC_COM)/ecmcAsynPortDriver.h
 HEADERS += $(APPSRC_COM)/ecmcAsynDataItem.h
 HEADERS += $(APPSRC_COM)/ecmcAsynPortDriverUtils.h
+HEADERS += $(APPSRC_MAIN)/ecmcGeneral.h
 HEADERS += $(APPSRC_MAIN)/ecmcDefinitions.h
 HEADERS += $(APPSRC_MAIN)/ecmcErrorsList.h
+HEADERS += $(APPSRC_MISC)/ecmcMisc.h
+HEADERS += $(APPSRC_MOTION)/ecmcMotion.h
+HEADERS += $(APPSRC_ETHERCAT)/ecmcEthercat.h
 
 DBDS    += $(APPSRC_COM)/ecmcController.dbd
 DBDS    += $(APPSRC_MOTOR)/ecmcMotorRecordSupport.dbd
