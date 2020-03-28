@@ -157,6 +157,7 @@ HEADERS += $(APPSRC_MAIN)/ecmcErrorsList.h
 HEADERS += $(APPSRC_MISC)/ecmcMisc.h
 HEADERS += $(APPSRC_MOTION)/ecmcMotion.h
 HEADERS += $(APPSRC_ETHERCAT)/ecmcEthercat.h
+HEADERS += $(APPSRC_PLC)/ecmcPLC.h
 
 DBDS    += $(APPSRC_COM)/ecmcController.dbd
 DBDS    += $(APPSRC_MOTOR)/ecmcMotorRecordSupport.dbd
