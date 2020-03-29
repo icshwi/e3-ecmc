@@ -73,7 +73,6 @@ else
   endif
 endif
 
-
 APP:=devEcmcSup
 APPSRC:=$(APP)
 
@@ -84,6 +83,7 @@ APPSRC_MAIN:=$(APPSRC)/main
 APPSRC_PLC:=$(APPSRC)/plc
 APPSRC_MISC:=$(APPSRC)/misc
 APPSRC_MOTOR:=$(APPSRC)/motor
+APPSRC_PLUGIN:=$(APPSRC)/plugin
 
 USR_INCLUDES += -I$(where_am_I)$(APPSRC)
 
@@ -139,12 +139,28 @@ SOURCES += $(APPSRC_PLC)/ecmcPLCMain.cpp
 SOURCES += $(APPSRC_MOTOR)/ecmcMotorRecordController.cpp
 SOURCES += $(APPSRC_MOTOR)/ecmcMotorRecordAxis.cpp
 
+SOURCES += $(APPSRC_PLUGIN)/ecmcPlugin.cpp
+SOURCES += $(APPSRC_PLUGIN)/ecmcPluginLib.cpp
+
 SOURCES += gitversion.c
+
+HEADERS += $(APPSRC_PLUGIN)/ecmcPlugin.h
+HEADERS += $(APPSRC_PLUGIN)/ecmcPluginDefs.h
+HEADERS += $(APPSRC_PLUGIN)/ecmcPluginDataRefs.h
+HEADERS += $(APPSRC_COM)/ecmcCom.h
+HEADERS += $(APPSRC_COM)/ecmcAsynPortDriver.h
+HEADERS += $(APPSRC_COM)/ecmcAsynDataItem.h
+HEADERS += $(APPSRC_COM)/ecmcAsynPortDriverUtils.h
+HEADERS += $(APPSRC_MAIN)/ecmcGeneral.h
+HEADERS += $(APPSRC_MAIN)/ecmcDefinitions.h
+HEADERS += $(APPSRC_MAIN)/ecmcErrorsList.h
+HEADERS += $(APPSRC_MISC)/ecmcMisc.h
+HEADERS += $(APPSRC_MOTION)/ecmcMotion.h
+HEADERS += $(APPSRC_ETHERCAT)/ecmcEthercat.h
+HEADERS += $(APPSRC_PLC)/ecmcPLC.h
 
 DBDS    += $(APPSRC_COM)/ecmcController.dbd
 DBDS    += $(APPSRC_MOTOR)/ecmcMotorRecordSupport.dbd
-
-ecmcEcMemMap$(DEP): gitversion.c
 
 gitversion.c: 
 	$(QUIET)$(RM) $@
