@@ -90,7 +90,6 @@ USR_INCLUDES += -I$(where_am_I)$(APPSRC)
 SOURCES += $(APPSRC_MAIN)/ecmcGeneral.cpp 
 SOURCES += $(APPSRC_MAIN)/ecmcError.cpp 
 SOURCES += $(APPSRC_MAIN)/ecmcMainThread.cpp
-SOURCES += $(APPSRC_MAIN)/ecmcGenericDataIF.cpp
 
 SOURCES += $(APPSRC_COM)/ecmcCom.cpp
 SOURCES += $(APPSRC_COM)/ecmcOctetIF.c
@@ -98,6 +97,7 @@ SOURCES += $(APPSRC_COM)/ecmcCmdParser.c
 SOURCES += $(APPSRC_COM)/ecmcAsynPortDriver.cpp 
 SOURCES += $(APPSRC_COM)/ecmcAsynPortDriverUtils.cpp 
 SOURCES += $(APPSRC_COM)/ecmcAsynDataItem.cpp 
+SOURCES += $(APPSRC_COM)/ecmcDataItem.cpp
 
 SOURCES += $(APPSRC_MOTION)/ecmcMotion.cpp 
 SOURCES += $(APPSRC_MOTION)/ecmcAxisBase.cpp 
