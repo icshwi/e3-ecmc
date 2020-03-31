@@ -90,6 +90,7 @@ USR_INCLUDES += -I$(where_am_I)$(APPSRC)
 SOURCES += $(APPSRC_MAIN)/ecmcGeneral.cpp 
 SOURCES += $(APPSRC_MAIN)/ecmcError.cpp 
 SOURCES += $(APPSRC_MAIN)/ecmcMainThread.cpp
+SOURCES += $(APPSRC_MAIN)/ecmcGenericDataIF.cpp
 
 SOURCES += $(APPSRC_COM)/ecmcCom.cpp
 SOURCES += $(APPSRC_COM)/ecmcOctetIF.c
