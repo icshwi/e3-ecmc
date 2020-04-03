@@ -90,7 +90,6 @@ USR_INCLUDES += -I$(where_am_I)$(APPSRC)
 SOURCES += $(APPSRC_MAIN)/ecmcGeneral.cpp 
 SOURCES += $(APPSRC_MAIN)/ecmcError.cpp 
 SOURCES += $(APPSRC_MAIN)/ecmcMainThread.cpp
-SOURCES += $(APPSRC_MAIN)/ecmcGenericDataIF.cpp
 
 SOURCES += $(APPSRC_COM)/ecmcCom.cpp
 SOURCES += $(APPSRC_COM)/ecmcOctetIF.c
@@ -98,6 +97,7 @@ SOURCES += $(APPSRC_COM)/ecmcCmdParser.c
 SOURCES += $(APPSRC_COM)/ecmcAsynPortDriver.cpp 
 SOURCES += $(APPSRC_COM)/ecmcAsynPortDriverUtils.cpp 
 SOURCES += $(APPSRC_COM)/ecmcAsynDataItem.cpp 
+SOURCES += $(APPSRC_COM)/ecmcDataItem.cpp
 
 SOURCES += $(APPSRC_MOTION)/ecmcMotion.cpp 
 SOURCES += $(APPSRC_MOTION)/ecmcAxisBase.cpp 
@@ -142,19 +142,19 @@ SOURCES += $(APPSRC_MOTOR)/ecmcMotorRecordAxis.cpp
 
 SOURCES += $(APPSRC_PLUGIN)/ecmcPlugin.cpp
 SOURCES += $(APPSRC_PLUGIN)/ecmcPluginLib.cpp
+SOURCES += $(APPSRC_PLUGIN)/ecmcPluginClient.cpp
 
 SOURCES += gitversion.c
 
 HEADERS += $(APPSRC_PLUGIN)/ecmcPlugin.h
 HEADERS += $(APPSRC_PLUGIN)/ecmcPluginDefs.h
-HEADERS += $(APPSRC_PLUGIN)/ecmcPluginDataRefs.h
-HEADERS += $(APPSRC_COM)/ecmcCom.h
+HEADERS += $(APPSRC_PLUGIN)/ecmcPluginClient.h
 HEADERS += $(APPSRC_COM)/ecmcAsynPortDriver.h
 HEADERS += $(APPSRC_COM)/ecmcAsynDataItem.h
+HEADERS += $(APPSRC_COM)/ecmcDataItem.h
 HEADERS += $(APPSRC_COM)/ecmcAsynPortDriverUtils.h
 HEADERS += $(APPSRC_MAIN)/ecmcGeneral.h
 HEADERS += $(APPSRC_MAIN)/ecmcDefinitions.h
-HEADERS += $(APPSRC_MAIN)/ecmcErrorsList.h
 HEADERS += $(APPSRC_MISC)/ecmcMisc.h
 HEADERS += $(APPSRC_MOTION)/ecmcMotion.h
 HEADERS += $(APPSRC_ETHERCAT)/ecmcEthercat.h
