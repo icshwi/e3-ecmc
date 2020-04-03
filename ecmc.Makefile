@@ -142,6 +142,7 @@ SOURCES += $(APPSRC_MOTOR)/ecmcMotorRecordAxis.cpp
 
 SOURCES += $(APPSRC_PLUGIN)/ecmcPlugin.cpp
 SOURCES += $(APPSRC_PLUGIN)/ecmcPluginLib.cpp
+SOURCES += $(APPSRC_PLUGIN)/ecmcPluginClient.cpp
 
 SOURCES += gitversion.c
 
