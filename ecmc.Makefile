@@ -42,7 +42,6 @@ EXCLUDE_ARCHS += linux-ppc64e6500
 EXCLUDE_ARCHS += linux-corei7-poky
 
 ifeq ($(T_A),linux-x86_64)
-  $(info    T_A is $(T_A))
   # Assume that the etherlab user library is done via
   # https://github.com/icshwi/etherlabmaster
   USR_INCLUDES += -I/opt/etherlab/include
@@ -52,7 +51,6 @@ ifeq ($(T_A),linux-x86_64)
   USR_LDFLAGS += -Wl,-rpath=/opt/etherlab/lib
 else 
   ifeq ($(T_A),linux-arm)
-    $(info    T_A is $(T_A))
     # Assume that the etherlab user library is done via
     # https://github.com/icshwi/etherlabmaster
     USR_INCLUDES += -I/opt/etherlab/include
@@ -61,7 +59,6 @@ else
     USR_LDFLAGS += -lethercat
     USR_LDFLAGS += -Wl,-rpath=/opt/etherlab/lib
   else
-    $(info    In else T_A is $(T_A))
     # Assume that the etherlab user library is done via
     # Yocto ESS Linux bb recipe
     USR_INCLUDES += -I$(SDKTARGETSYSROOT)/usr/include/etherlab
@@ -73,7 +70,6 @@ else
   endif
 endif
 
-
 APP:=devEcmcSup
 APPSRC:=$(APP)
 
@@ -84,6 +80,7 @@ APPSRC_MAIN:=$(APPSRC)/main
 APPSRC_PLC:=$(APPSRC)/plc
 APPSRC_MISC:=$(APPSRC)/misc
 APPSRC_MOTOR:=$(APPSRC)/motor
+APPSRC_PLUGIN:=$(APPSRC)/plugin
 
 USR_INCLUDES += -I$(where_am_I)$(APPSRC)
 
@@ -97,6 +94,7 @@ SOURCES += $(APPSRC_COM)/ecmcCmdParser.c
 SOURCES += $(APPSRC_COM)/ecmcAsynPortDriver.cpp 
 SOURCES += $(APPSRC_COM)/ecmcAsynPortDriverUtils.cpp 
 SOURCES += $(APPSRC_COM)/ecmcAsynDataItem.cpp 
+SOURCES += $(APPSRC_COM)/ecmcDataItem.cpp
 
 SOURCES += $(APPSRC_MOTION)/ecmcMotion.cpp 
 SOURCES += $(APPSRC_MOTION)/ecmcAxisBase.cpp 
@@ -139,12 +137,28 @@ SOURCES += $(APPSRC_PLC)/ecmcPLCMain.cpp
 SOURCES += $(APPSRC_MOTOR)/ecmcMotorRecordController.cpp
 SOURCES += $(APPSRC_MOTOR)/ecmcMotorRecordAxis.cpp
 
+SOURCES += $(APPSRC_PLUGIN)/ecmcPlugin.cpp
+SOURCES += $(APPSRC_PLUGIN)/ecmcPluginLib.cpp
+SOURCES += $(APPSRC_PLUGIN)/ecmcPluginClient.cpp
+
 SOURCES += gitversion.c
+
+HEADERS += $(APPSRC_PLUGIN)/ecmcPlugin.h
+HEADERS += $(APPSRC_PLUGIN)/ecmcPluginDefs.h
+HEADERS += $(APPSRC_PLUGIN)/ecmcPluginClient.h
+HEADERS += $(APPSRC_COM)/ecmcAsynPortDriver.h
+HEADERS += $(APPSRC_COM)/ecmcAsynDataItem.h
+HEADERS += $(APPSRC_COM)/ecmcDataItem.h
+HEADERS += $(APPSRC_COM)/ecmcAsynPortDriverUtils.h
+HEADERS += $(APPSRC_MAIN)/ecmcGeneral.h
+HEADERS += $(APPSRC_MAIN)/ecmcDefinitions.h
+HEADERS += $(APPSRC_MISC)/ecmcMisc.h
+HEADERS += $(APPSRC_MOTION)/ecmcMotion.h
+HEADERS += $(APPSRC_ETHERCAT)/ecmcEthercat.h
+HEADERS += $(APPSRC_PLC)/ecmcPLC.h
 
 DBDS    += $(APPSRC_COM)/ecmcController.dbd
 DBDS    += $(APPSRC_MOTOR)/ecmcMotorRecordSupport.dbd
-
-ecmcEcMemMap$(DEP): gitversion.c
 
 gitversion.c: 
 	$(QUIET)$(RM) $@
