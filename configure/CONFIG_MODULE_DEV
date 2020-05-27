@@ -1,11 +1,11 @@
 #
 EPICS_MODULE_NAME:=ecmc
 
-EPICS_MODULE_TAG:=master
+EPICS_MODULE_TAG:=anders_add_func_string
 #
-E3_MODULE_VERSION:=master
+E3_MODULE_VERSION:=develop
 ASYN_DEP_VERSION:=4.36.0
-EXPRTK_DEP_VERSION:=1.2.0
+EXPRTK_DEP_VERSION:=develop
 MOTOR_DEP_VERSION:=7.0.1
 #
 # In most case, we don't need to touch the following variables.
