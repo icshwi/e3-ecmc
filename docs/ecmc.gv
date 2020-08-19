@@ -1,10 +1,10 @@
 digraph ecmc {
 node [shape=record];
-base [label="base 7.0.3"]
-require [label="require 3.1.1"]
-ASYN [label="ASYN 4.36.0"]
-EXPRTK [label="EXPRTK 1.2.0"]
+base [label="base 7.0.4"]
+require [label="require 3.2.0"]
+asyn [label="asyn 4.37.0"]
+exprtk [label="exprtk 1.2.0"]
 ecmc [label="ecmc 6.0.1"]
-base -> require -> { ASYN,EXPRTK } ->  {  ecmc  } 
+base -> require -> { asyn,exprtk } ->  {  ecmc  } 
 } 
 
